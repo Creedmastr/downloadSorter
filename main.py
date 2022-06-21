@@ -55,7 +55,7 @@ for i in dlFolder:
     if i.endswith(".mp3") or i.endswith(".ogg") or i.endswith(".flac") or i.endswith(".m4a") or i.endswith(".mpc") or i.endswith(".opus") or i.endswith(".wav") or i.endswith(".webm"):
         shutil.move(itemPath, musicPath)
 
-    if i.endswith(".docx") or i.endswith(".doc") or i.endswith(".pdf") or i.endswith(".ppx") or i.endswith(".csv"):
+    if i.endswith(".docx") or i.endswith(".doc") or i.endswith(".pdf") or i.endswith(".pptx") or i.endswith(".csv") or i.endswith(".xlsx") or i.endswith(".epf") or i.endswith(".xml"):
         if i.endswith(".docx") or i.endswith(".doc"):
             wordDocPath = documentsPath + "/Word Documents"
             try:
@@ -64,7 +64,7 @@ for i in dlFolder:
                 print(error)
             shutil.move(itemPath, wordDocPath)
 
-        if i.endswith(".ppx"):
+        if i.endswith(".pptx"):
             powerpointDocPath = documentsPath + "/PowerPoint Documents"
             try:
                 os.mkdir(powerpointDocPath)
@@ -80,7 +80,7 @@ for i in dlFolder:
                 print(error)
             shutil.move(itemPath, pdfDocPath)
 
-        if i.endswith(".csv"):
+        if i.endswith(".csv") or i.endswith(".xlsx"):
             excelFilePath = documentsPath + "/Excel Documents"
             try:
                 os.mkdir(excelFilePath)
@@ -88,6 +88,15 @@ for i in dlFolder:
                 print(error)
 
             shutil.move(itemPath, excelFilePath)
+
+        if i.endswith(".epf"):
+            epfFilePath = documentsPath + "/Eclipse Theme"
+            try:
+                os.mkdir(epfFilePath)
+            except OSError as error:
+                print(error)
+
+            shutil.move(itemPath, epfFilePath)
     if i.endswith(".torrent") or i.endswith(".zip") or i.endswith(".rar") or i.endswith(".7z"):
         if i.endswith(".torrent"):
             torrentFilePath = dlPath + "/Torrent Files"
@@ -153,3 +162,11 @@ for i in dlFolder:
         shutil.move(itemPath, bookFilePath)
     if i.endswith(".mov") or i.endswith(".mp4"):
         shutil.move(itemPath, videoPath)
+    if i.endswith(".crdownload"):
+        nonfinishedDownloadPath = dlPath + "/Unfinished Downloads"
+        try:
+            os.mkdir(nonfinishedDownloadPath)
+        except OSError as error:
+            print(error)
+
+        shutil.move(itemPath, nonfinishedDownloadPath)
