@@ -44,15 +44,12 @@ for i in dlFolder:
                     print(error)
                 shutil.move(itemPath, aiFilePath)
 
-            if i.count("-") >= int("2"):
-                screenShotPath = imagePath + "/Screenshot"
+            if i.count("-") >= 2:
+                screenshotPath = imagePath + "/Screenshots"
                 try:
-                    os.mkdir(screenShotPath)
+                    os.mkdir(screenshotPath)
                 except OSError as error:
                     print(error)
-
-                shutil.move(itemPath, screenShotPath)
-
             shutil.move(itemPath, imagePath)
 
     if i.endswith(".mp3") or i.endswith(".ogg") or i.endswith(".flac") or i.endswith(".m4a") or i.endswith(".mpc") or i.endswith(".opus") or i.endswith(".wav") or i.endswith(".webm"):
