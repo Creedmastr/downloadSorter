@@ -1,14 +1,7 @@
-import asyncio
 import os
-import random
-import time
-import tkinter
-from tkinter import simpledialog
-from os.path import exists
 import json
 import startup
 import shutil
-import eyed3
 
 startup.startup()
 
