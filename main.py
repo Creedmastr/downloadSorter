@@ -21,11 +21,13 @@ if CONFIG_PATH.endswith("/"):
     documentsPath = CONFIG_PATH + "Documents"
     musicPath = CONFIG_PATH + "Music"
     imagePath = CONFIG_PATH + "Images"
+    videoPath = CONFIG_PATH + "Videos"
 else:
     dlPath = CONFIG_PATH + "/Downloads"
     documentsPath = CONFIG_PATH + "/Documents"
     musicPath = CONFIG_PATH + "/Music"
     imagePath = CONFIG_PATH + "/Images"
+    videoPath = CONFIG_PATH + "/Videos"
 
 dlFolder = os.listdir(dlPath)
 
@@ -159,3 +161,5 @@ for i in dlFolder:
             print(error)
 
         shutil.move(itemPath, bookFilePath)
+    if i.endswith(".mov") or i.endswith(".mp4"):
+        shutil.move(itemPath, videoPath)
