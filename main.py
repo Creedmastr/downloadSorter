@@ -44,6 +44,7 @@ for i in dlFolder:
                     print(error)
                 shutil.move(itemPath, aiFilePath)
 
+            shutil.move(itemPath, imagePath)
     if i.endswith(".mp3") or i.endswith(".ogg") or i.endswith(".flac") or i.endswith(".m4a") or i.endswith(".mpc") or i.endswith(".opus") or i.endswith(".wav") or i.endswith(".webm"):
         shutil.move(itemPath, musicPath)
 
@@ -89,6 +90,8 @@ for i in dlFolder:
                 print(error)
 
             shutil.move(itemPath, epfFilePath)
+
+        shutil.move(itemPath, documentsPath)
     if i.endswith(".torrent") or i.endswith(".zip") or i.endswith(".rar") or i.endswith(".7z"):
         if i.endswith(".torrent"):
             torrentFilePath = dlPath + "/Torrent Files"
@@ -162,3 +165,19 @@ for i in dlFolder:
             print(error)
 
         shutil.move(itemPath, nonfinishedDownloadPath)
+    if i.endswith(".iso"):
+        isoFilePath = dlPath + "/ISO - System Files"
+        try:
+            os.mkdir(isoFilePath)
+        except OSError as error:
+            print(error)
+        shutil.move(itemPath, isoFilePath)
+
+    if i.endswith(".blend") or i.endswith(".blend1"):
+        blendPath = documentsPath + "/BLEND - Blender Files"
+        try:
+            os.mkdir(blendPath)
+        except OSError as error:
+            print(error)
+
+        shutil.move(itemPath, blendPath)
