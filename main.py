@@ -25,7 +25,9 @@ else:
 dlFolder = os.listdir(dlPath)
 
 for i in dlFolder:
+    global itemPath
     itemPath = dlPath + "/" + str(i)
+
     if i.endswith(".png") or i.endswith(".jpg") or i.endswith(".jpeg") or i.endswith('.tiff') or i.endswith('.psd') or i.endswith('.ai') or i.endswith(".webp") or i.endswith(".gif"):
 
             if i.endswith(".psd"):
@@ -102,7 +104,7 @@ for i in dlFolder:
 
             shutil.move(itemPath, torrentFilePath)
         if i.endswith(".zip") or i.endswith('.rar') or i.endswith("7z"):
-            zipFilePath = documentsPath + "/Zipped Files"
+            zipFilePath = dlPath + "/Zipped Files"
             try:
                 os.mkdir(zipFilePath)
             except OSError as error:
@@ -181,3 +183,12 @@ for i in dlFolder:
             print(error)
 
         shutil.move(itemPath, blendPath)
+
+    if i.endswith(".ipa"):
+        ipaPath = documentsPath + "/Apple IPAs"
+        try:
+            os.mkdir(ipaPath)
+        except OSError as error:
+            print(error)
+
+        shutil.move(itemPath, ipaPath)
